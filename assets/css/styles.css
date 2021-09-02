@@ -1,0 +1,9 @@
+button {
+  margin: 1rem 0;
+}
+
+@media print {
+  .generation {
+    visibility: hidden;
+  }
+}
