@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Vaccine Attestation</title>
+    </head>
+    <script type="text/javascript" src="assets/uswds-2.12.1/js/uswds-init.min.js"></script>
+    <script type="text/javascript" src="assets/js/qrcode.min.js"></script>
+    <link rel="stylesheet" href="assets/uswds-2.12.1/css/uswds.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <body>
+        <script src="assets/uswds-2.12.1/js/uswds.min.js"></script>
+        <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+        <section class="usa-banner" aria-label="Official government website">
+        <div class="usa-accordion">
+            <header class="usa-banner__header">
+            <div class="usa-banner__inner">
+                <div class="grid-col-auto">
+                <img
+                    class="usa-banner__header-flag"
+                    src="assets/img/us_flag_small.png"
+                    alt="U.S. flag"
+                />
+                </div>
+                <div class="grid-col-fill tablet:grid-col-auto">
+                <p class="usa-banner__header-text">
+                    NOT an official website of the United States government
+                </p>
+                </div>
+            </div>
+            </header>
+        
+        </div>
+        </section>
+
+        <div class="usa-overlay"></div>
+        <header class="usa-header usa-header--basic">
+        <div class="usa-nav-container">
+            <div class="usa-navbar">
+            <div class="usa-logo" id="basic-logo">
+                <em class="usa-logo__text">                    
+                <a href="javascript:void(0)" title="&lt;Project title&gt;">
+                    <img src="assets/img/gsa-logo-1024.png" width=48 height=48 />
+                    GSAttestation
+                </a>
+                </em>
+            </div>
+            <button class="usa-menu-btn">Menu</button>
+            </div>
+            <nav aria-label="Primary navigation" class="usa-nav">
+            <button class="usa-nav__close">
+                <img src="/assets/img/usa-icons/close.svg" role="img" alt="Close" />
+            </button>
+           
+            <form class="usa-search usa-search--small" role="search">
+                <label class="usa-sr-only" for="basic-search-field-en-small">
+                Search
+                </label>
+                <input
+                class="usa-input"
+                id="basic-search-field-en-small"
+                type="search"
+                name="search"
+                />
+                <button class="usa-button" type="submit">
+                <span class="usa-sr-only">Search</span>
+                </button>
+            </form>
+            </nav>
+        </div>
+        </header>
+
+        <div class="usa-section">
+        <div class="grid-container">
+            <div class="grid-row grid-gap">
+            <div class="usa-layout-docs__sidenav desktop:grid-col-3">
+                <nav aria-label="Secondary navigation">
+                <ul class="usa-sidenav">
+                    <li class="usa-sidenav__item">
+                    <a href="javascript:void(0);">Home</a>
+                    </li>
+                    <li class="usa-sidenav__item">
+                    <a href="javascript:void(0);" class="usa-current">Attestation</a>
+                    <ul class="usa-sidenav__sublist">
+                        <li class="usa-sidenav__item">
+                        <a href="javascript:void(0);" class="usa-current">Personal Attestation</a>
+                        </li>
+                        <li class="usa-sidenav__item">
+                        <a href="javascript:void(0);">Bulk Attestation</a>
+                        </li>
+                        <li class="usa-sidenav__item">
+                        <a href="javascript:void(0);">Legal</a>
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+                </nav>
+            </div>
+
+            <main
+                class="
+                usa-layout-docs__main
+                desktop:grid-col-9
+                usa-prose usa-layout-docs
+                "
+                id="main-content"
+            >
+                <h1>Personal Attestation</h1>
+
+                <p class="usa-intro">
+                If you are entering federal buildings as an employee, on-site contractor, or visitor from another agency, your attestation guides behavior and helps keep you and your coworkers safe.
+                </p>
+
+                <label class="usa-label" for="attestation">An attestation is a <b>true statement</b> about yourself.</label>
+                <div class="usa-combo-box">
+                  <select class="usa-select" name="attestation" id="attestation" onchange="generate_attestation_qr()">
+                    <option value>Select one...</option>
+                    <option value="FULLYVACCINATED">I am fully vaccinated.</option>
+                    <option value="PARTIALLYVACCINATED">I am partially vaccinated.</option>
+                    <option value="UNVACCINATED">I am not vaccinated.</option>
+                    <option value="ACCOMMODATION">I have an accommodation from my employer.</option>
+                    <option value="PREFERNOT">I prefer not to answer.</option>
+                    </select>
+                </div>
+
+                <div class="grid-container border margin-2 print-me" id="attestation-document" style="visibility: hidden;">
+                    <div class="grid-row  margin-x-auto">
+                      <div class="grid-col-7 margin-1">
+                          <h1>Vaccine Attestation</h1>
+                          <div class="usa-alert" id="mask-alert">
+                            
+                          </div>
+                          <p>
+                            If local transmission conditions are 
+                            <code class="usa-tag-low">LOW</code> or 
+                            <code class="usa-tag-moderate">MODERATE</code>, you may choose to not wear a mask.  
+                          </p>
+                          <p>
+                            If local transmission conditions are 
+                            <code class="usa-tag-substantial">SUBSTANTIAL</code> or 
+                            <code class="usa-tag-high">HIGH</code>, you MUST wear a mask.  
+                          </p>
+
+                      </div>
+                      <div class="grid-col-4 margin-left-4">
+                        <div class="display vertical-center">
+                            <div id="qrcode" ></div>
+                        </div>                                  
+                      </div>
+                    </div>
+
+                    <div class="grid-row margin-2 padding-1 margin-x-auto">
+                        <div class="grid-col-12">
+                            <small>UUID <span id="uuid"></span></small>
+                        </div>
+                    </div>
+                  </div>
+            </main>
+            </div>
+        </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="assets/js/attestation2.js"></script>
+</html>
