@@ -5,7 +5,7 @@ var attestation = document.getElementById("attestation");
 var uuid = document.getElementById("uuid");
 var docu = document.getElementById("attestation-document");
 var mask_alert = document.getElementById("mask-alert");
-
+var uuid_value = generateId(40);
 var optional_text = "The individual bearing this attestation may choose not to wear a mask depending on local conditions and the preferences of those around them.";
 var required_text = "The individual bearing this attestation should wear a mask regardless of local conditions.";
 
@@ -53,6 +53,7 @@ function makealert(type) {
     removeAllChildNodes(mask_alert);
     mask_alert.appendChild(d1);
 
+    uuid_value = generateId(40);
     //uuid.innerHTML = generateId(40);
 }
 
@@ -80,7 +81,7 @@ function generate_attestation_qr() {
   var behavior = determine_behavior(attestation.value);
   console.log("behavior", behavior)
   qrcode = new QRCode(qrcodeElement, {
-  text: JSON.stringify({ behavior: behavior, uuid: uuid.innerHTML }),
+  text: JSON.stringify({ behavior: behavior, uuid: uuid_value }),
     colorDark: "#000000",
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.H,
