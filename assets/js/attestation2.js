@@ -53,7 +53,7 @@ function makealert(type) {
     removeAllChildNodes(mask_alert);
     mask_alert.appendChild(d1);
 
-    uuid.innerHTML = generateId(40);
+    //uuid.innerHTML = generateId(40);
 }
 
 
